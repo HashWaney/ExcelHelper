@@ -29,6 +29,7 @@ import java.util.Date;
 
 import com.hash.excel.helper.bean.ExcelImpl;
 import com.hash.excel.helper.bean.Test;
+import com.hash.excel.helper.utils.FileUtils;
 import com.smile.excelhelper.ExcelUtil;
 
 import jxl.read.biff.BiffException;
@@ -151,45 +152,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 break;
             case R.id.open_button:
-//                openDir();
-                Test test = new Test();
-                test.setAge(1);
-                test.setName("hash");
-                Log.e(MainActivity.class.getSimpleName(), "test:" + test.toString());
-
-//                FileUtils.getInstance().deleteFiles();
-                ArrayList<ExcelImpl> excels = new ArrayList<>();
-                ExcelImpl excel = new ExcelImpl("cpu", "true");
-                ExcelImpl excel2 = new ExcelImpl("gpu", "false");
-                excel.setExtend("测试结果1");
-                excel2.setExtend("测试结果2");
-
-                excels.add(excel);
-                excels.add(excel2);
-                ArrayList<ArrayList<String>> list = new ArrayList<>();
-                for (int i = 0; i < excels.size(); i++) {
-                    ExcelImpl excel1 = excels.get(i);
-                    Log.e(MainActivity.class.getSimpleName(), "excels:" + excel1.toString() + " [classname]:" + excel1.getClass().getSimpleName());
-                    String txt = excel1.toString();
-                    if (!TextUtils.isEmpty(txt)) {
-                        String replaceTxt = txt.replace(excel1.getClass().getSimpleName(), "");
-                        if (replaceTxt.contains("{") && replaceTxt.contains("}")) {
-                            String split = replaceTxt.replace("{", "").replace("}", "");
-                            String[] splitArr = split.split(",");
-                            Log.e(MainActivity.class.getSimpleName(), "split:[" + split + "]" + " splitArr:[" + splitArr.toString() + "]" + " splitArr.length:[" + splitArr.length + "]");
-                            ArrayList<String> arrayList = new ArrayList<>();
-                            for (String str : splitArr) {
-                                arrayList.add(str);
-
-                            }
-                            list.add(arrayList);
-                        }
-                    }
-
-                }
-                Log.e(MainActivity.class.getSimpleName(), "list:" + list + " [list.size]:" + list.size());
-
-
+                FileUtils.getInstance().deleteFiles();
             default:
                 break;
         }
@@ -215,36 +178,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         String format = simpleDateFormat.format(new Date());
         String excelFileName = format + ".xls";
         String[] title = {"姓名", "年龄", "男孩"};
-//        List<DemoBean> demoBeanList = new ArrayList<>();
-//        DemoBean demoBean1 = new DemoBean("starting instant run server: is main process", 111, true);
-//        DemoBean demoBean2 = new DemoBean("SSS12jlaflakflaklkwlqklfq", 122, false);
-//        DemoBean demoBean3 = new DemoBean("piler allocated 5MB to compile void jxl.write.biff.SheetWriter.wri", 183, true);
-//        DemoBean demoBean4 = new DemoBean("Do partial code cache collection, code=8KB, data=27KB", 134, false);
-//        DemoBean demoBean5 = new DemoBean("ailed for pid 16058: Operation not permitted", 134, false);
-//        DemoBean demoBean6 = new DemoBean("action=com.ubox.update.install totalCount=9 current=1result=true", 134, false);
-//        DemoBean demoBean7 = new DemoBean("SSS12jlaflakflaklkwlqklfq", 134, false);
-//        DemoBean demoBean8 = new DemoBean("132 16107-16123/com.ubox.install D/UboxInstall: syncInstall = true", 134, false);
-//        DemoBean demoBean9 = new DemoBean(":\"\\/mnt\\/sdcard\\/Ubox\\/update\\/vbox_1.3.22.20190905_1820_aliface_release.apk\"}]", 134, false);
-//        DemoBean demoBean10 = new DemoBean("SSS10", 134, false);
-//        DemoBean demoBean11 = new DemoBean(".101 16107-16107/? D/UboxInstall: recevice com.ubox.insta", 134, false);
-//        DemoBean demoBean12 = new DemoBean("SSS12", 134, false);
-//        DemoBean demoBean13 = new DemoBean("\"install\":true,\"path\":\"\\/mnt\\/sdcard\\/Ubox\\/update\\/Alipay_IoTMaster_2.3.0.apk\"},{\"install\":true,\"path\":\"\\", 134, false);
-//        DemoBean demoBean14 = new DemoBean("der referenced unknown path: /system/lib64/UboxInstall1.0.0", 134, false);
-//        demoBeanList.add(demoBean1);
-//        demoBeanList.add(demoBean2);
-//        demoBeanList.add(demoBean3);
-//        demoBeanList.add(demoBean4);
-//        demoBeanList.add(demoBean5);
-//        demoBeanList.add(demoBean6);
-//        demoBeanList.add(demoBean7);
-//        demoBeanList.add(demoBean8);
-//        demoBeanList.add(demoBean9);
-//        demoBeanList.add(demoBean10);
-//        demoBeanList.add(demoBean11);
-//        demoBeanList.add(demoBean12);
-//        demoBeanList.add(demoBean13);
-//        demoBeanList.add(demoBean14);
-
         ArrayList<ExcelImpl> excels = new ArrayList<>();
         ExcelImpl excel = new ExcelImpl("cpu", "true");
         ExcelImpl excel2 = new ExcelImpl("gpu", "false");
